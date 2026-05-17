@@ -1,0 +1,24 @@
+# ============================================================================
+# Streamlit configuration
+# ============================================================================
+# Light theme with restrained colors. The app's actual styling is in
+# the inline CSS within ui_protocol.py and app.py; this file just
+# sets defaults so the page chrome matches.
+
+[theme]
+base = "light"
+primaryColor = "#1f2937"
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f9fafb"
+textColor = "#111827"
+
+[server]
+# When running on Streamlit Community Cloud, these are overridden by
+# the platform. Locally they keep the dev experience predictable.
+runOnSave = false
+headless = false
+
+[client]
+# Suppress the "Made with Streamlit" footer in production. Set to false
+# to keep it for transparency about the platform.
+toolbarMode = "minimal"
