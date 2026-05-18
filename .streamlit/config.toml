@@ -1,9 +1,9 @@
 # ============================================================================
 # Streamlit configuration
 # ============================================================================
-# Light theme with restrained colors. The app's actual styling is in
-# the inline CSS within ui_protocol.py and app.py; this file just
-# sets defaults so the page chrome matches.
+# Settings tuned for both local development and Streamlit Community Cloud.
+# The app's visual styling is in inline CSS within ui_protocol.py and app.py;
+# this file controls page chrome and runtime behavior.
 
 [theme]
 base = "light"
@@ -13,12 +13,17 @@ secondaryBackgroundColor = "#f9fafb"
 textColor = "#111827"
 
 [server]
-# When running on Streamlit Community Cloud, these are overridden by
-# the platform. Locally they keep the dev experience predictable.
+# headless = true is required for cloud deployment; the Linux server has
+# no browser to open. This also works locally — Streamlit prints the URL
+# to the terminal instead of auto-opening a browser.
+headless = true
 runOnSave = false
-headless = false
+
+[browser]
+# Suppress the first-run telemetry prompt that can block boot on
+# fresh cloud deployments.
+gatherUsageStats = false
 
 [client]
-# Suppress the "Made with Streamlit" footer in production. Set to false
-# to keep it for transparency about the platform.
+# Suppress the "Made with Streamlit" footer in production.
 toolbarMode = "minimal"
