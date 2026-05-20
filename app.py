@@ -140,6 +140,68 @@ def _inject_global_css() -> None:
             font-size: 0.72rem;
             font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
         }
+        /* CHANGE 1 — Visually distinct column panels.
+           Target only two-column rows (the chat/protocol body),
+           not three-column rows (the header's Reset button row).
+           The :has() selector matches a horizontal block whose
+           second column is also the last column — i.e., a 2-column row. */
+        [data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"]:nth-child(2):last-child) > [data-testid="stColumn"]:nth-of-type(1) {
+            background: #fafbfc;
+            border: 1px solid #eef2f7;
+            border-radius: 10px;
+            padding: 14px 18px 12px 18px;
+        }
+        [data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"]:nth-child(2):last-child) > [data-testid="stColumn"]:nth-of-type(2) {
+            background: #f4f6fb;
+            border: 1px solid #e6ebf5;
+            border-radius: 10px;
+            padding: 14px 16px 12px 16px;
+        }
+        /* CHANGE 3 — Chat input emphasis. The default input blends into white;
+           a thin navy top border and slight shadow give it presence. */
+        [data-testid="stChatInput"] {
+            border-top: 2px solid #1E2761 !important;
+            border-radius: 8px !important;
+            box-shadow: 0 2px 8px rgba(30, 39, 97, 0.08) !important;
+        }
+        [data-testid="stChatInput"] textarea {
+            font-size: 0.95rem !important;
+        }
+        /* Empty-state block (CHANGE 2) — see ui_chat.py for content */
+        .chat-empty-state {
+            text-align: center;
+            padding: 48px 24px 32px 24px;
+            color: #4b5563;
+        }
+        .chat-empty-state .empty-icon {
+            font-size: 2.6rem;
+            line-height: 1;
+            margin-bottom: 14px;
+            opacity: 0.7;
+        }
+        .chat-empty-state .empty-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #1E2761;
+            margin-bottom: 8px;
+        }
+        .chat-empty-state .empty-body {
+            font-size: 0.92rem;
+            line-height: 1.55;
+            color: #4b5563;
+            max-width: 460px;
+            margin: 0 auto 18px auto;
+        }
+        .chat-empty-state .empty-prompt {
+            display: inline-block;
+            background: #ffffff;
+            border: 1px solid #cadcfc;
+            border-radius: 6px;
+            padding: 8px 14px;
+            font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+            font-size: 0.88rem;
+            color: #1E2761;
+        }
         </style>
         """,
         unsafe_allow_html=True,
